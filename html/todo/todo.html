@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .mainDiv{
+      height: auto;
+      width: 800px;
+      border: 1px solid gray;
+      border-radius: 12px;
+      margin: 140px auto;
+    }
+    .todoHeading{
+      text-align: center;
+      margin-top: 17px;
+      font-size: 23px;
+      margin-bottom: 40px;
+    }
+    .inputAndBtn{
+      display: flex;
+      margin-bottom: 30px;
+    }
+    .inputSection{
+      width: 600px;
+      margin-left: 30px;
+    }
+    .todo{
+      height: 40px;
+      width: 500px;
+      border-radius: 5px;
+      border: 2px solid gray;
+      padding-left: 9px;
+      font-size: 20px;
+    }
+    button{
+      height: 40px;
+      width: 120px;
+      border-radius: 6px;
+      cursor: pointer;
+      border: none;
+      font-size: 20px;
+      font-weight: bolder;
+    }
+    .addBtn{
+      background-color: green;
+    }
+    li{
+      list-style-type: none;
+      height: 50px;
+      padding-top: 10px;
+      width: 500px;
+      font-size: 23px;
+    }
+    .taskDiv{
+      display: flex;
+      height: 50px;
+      justify-content: space-around;
+    }
+    ul{
+      margin-bottom: 20px;
+    }
+    .deleteBtn{
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="mainDiv">
+    <div class="todoHeading">
+      <h1>Todo List</h1>
+    </div>
+
+    <div class="inputAndBtn">
+      <div class="inputSection">
+      <input type="text" placeholder="enter todo" class="todo">
+    </div>
+    <div class="buttonDiv">
+      <button class="addBtn">Add</button>
+    </div>
+    </div>
+  </div>
+
+  <script>
+
+    let mainDiv=document.querySelector('.mainDiv');
+    let todo=document.querySelector('.todo');
+    let btn=document.querySelector('button');
+
+    let ul=document.createElement('ul');
+    
+    let todoArr=[];
+    btn.addEventListener('click',()=>{
+      let task=todo.value;
+      let taskDiv=document.createElement('div');
+      taskDiv.classList.add('taskDiv');
+      let li=document.createElement('li');
+      let btnSec=document.createElement('button');
+      btnSec.innerText='delete';
+      btnSec.classList.add('deleteBtn');
+      taskDiv.appendChild(li);
+      taskDiv.appendChild(btnSec);
+      if(task.trim()===''){
+        alert('please enter valid tasks');
+        return ;
+      }
+      if(todoArr.includes(task)){
+        alert(`${task} is already present in the list `);
+        return ;
+      }
+      todoArr.push(task);
+      li.innerText=task;
+
+      todo.value='';
+
+    btnSec.addEventListener('click', () => {
+    taskDiv.remove();
+
+    let index = todoArr.indexOf(task);
+    if (index !== -1) {
+      todoArr.splice(index, 1);
+    }
+    });
+    ul.appendChild(taskDiv);
+    mainDiv.appendChild(ul);
+    })
+
+  </script>
+</body>
+</html>
