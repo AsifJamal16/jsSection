@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .clockDiv{
+      height: 200px;
+      width: 600px;
+      margin: 200px auto;
+      border: 2px solid gray;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    h1{
+      font-size: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="clockDiv">
+    <h1></h1>
+  </div>
+  <script>
+    let h1=document.querySelector('h1');
+    let interval=setInterval(()=>{
+      let currTime=new Date();
+      currTime=currTime.toLocaleTimeString();
+      h1.innerText=currTime;
+    },1000)
+  </script>
+</body>
+</html>
