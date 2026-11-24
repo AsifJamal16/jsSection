@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100vh;
+      overflow: hidden; /* Prevents margin-collapse white bar at the top */
+    }
+    .btnDiv {
+      height: 100px;
+      width: 800px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border: 2px solid gainsboro;
+      margin: 80px auto;
+      border-radius: 12px;
+      background-color: white; 
+    }
+    button {
+      height: 30px;
+      width: 120px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 18px;
+      text-transform: capitalize;
+    }
+    #red { background-color: red; }
+    #green { background-color: green; }
+    #pink { background-color: pink; }
+    #yellow { background-color: yellow; }
+    #gray { background-color: gray; }
+  </style>
+</head>
+<body>
+
+  <div class="btnDiv">
+    <button class="btn" id="red">red</button>
+    <button class="btn" id="green">green</button>
+    <button class="btn" id="pink">pink</button>
+    <button class="btn" id="yellow">yellow</button>
+    <button class="btn" id="gray">gray</button>
+  </div>
+
+  <script>
+    document.querySelectorAll('.btn').forEach(button => {
+      button.addEventListener('click', () => {
+        document.body.style.backgroundColor = button.id;
+      });
+    });
+  </script>
+</body>
+</html>
